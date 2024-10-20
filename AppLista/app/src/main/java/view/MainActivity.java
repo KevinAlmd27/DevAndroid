@@ -15,7 +15,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     Pessoa pessoa;
+    Pessoa outraPessoa;
 
+    String dadosPessoa;
+    String dadosOutraPessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +33,38 @@ public class MainActivity extends AppCompatActivity {
 
         });
         pessoa = new Pessoa();
+        pessoa.setPrimeiroNome("Kevin");
+        pessoa.setSobrenome("Santos");
+        pessoa.setCursoDesejado("Android");
+        pessoa.setTelefoneContato("11-99229191");
+
+        outraPessoa = new Pessoa();
+        outraPessoa.setPrimeiroNome("Luiz");
+        outraPessoa.setSobrenome("alves");
+        outraPessoa.setCursoDesejado("Java");
+        outraPessoa.setTelefoneContato("11-99223344");
+
+        dadosPessoa = "Primeiro nome: ";
+        dadosPessoa += pessoa.getPrimeiroNome();
+        dadosPessoa += " Sobrenome ";
+        dadosPessoa += pessoa.getSobrenome();
+        dadosPessoa += " Curso Desejado ";
+        dadosPessoa += pessoa.getCursoDesejado();
+        dadosPessoa += " Telefone de Contato ";
+        dadosPessoa += pessoa.getTelefoneContato();
+
+        dadosOutraPessoa = "Primeiro nome: ";
+        dadosOutraPessoa += outraPessoa.getPrimeiroNome();
+        dadosOutraPessoa += " Sobrenome ";
+        dadosOutraPessoa += outraPessoa.getSobrenome();
+        dadosOutraPessoa += " Curso Desejado ";
+        dadosOutraPessoa += outraPessoa.getCursoDesejado();
+        dadosOutraPessoa += " Telefone de Contato ";
+        dadosOutraPessoa += outraPessoa.getTelefoneContato();
+
+        int parada = 0;
+
+
+
     }
 }
