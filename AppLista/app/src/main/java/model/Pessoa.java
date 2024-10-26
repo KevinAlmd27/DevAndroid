@@ -3,9 +3,14 @@ package model;
 public class Pessoa {
 
     private String primeiroNome;
+
     private String sobrenome;
+
     private String cursoDesejado;
+
     private String telefoneContato;
+
+    public Pessoa(){}
 
     public String getPrimeiroNome() {return primeiroNome;}
 
@@ -37,8 +42,13 @@ public class Pessoa {
         this.telefoneContato = telefoneContato;
     }
 
-    public Pessoa(){
-
-
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome='" + primeiroNome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", cursoDesejado='" + cursoDesejado + '\'' +
+                ", telefoneContato='" + telefoneContato + '\'' +
+                '}';
     }
 }
