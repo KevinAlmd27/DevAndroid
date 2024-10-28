@@ -13,10 +13,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import controller.PessoaController;
 import devandroid.kevin.applista.R;
 import model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    PessoaController controller;
 
     Pessoa pessoa;
     Pessoa outraPessoa;
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
+        controller = new PessoaController();
+        controller.toString();
+
         pessoa = new Pessoa();
 
         outraPessoa = new Pessoa();
@@ -92,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Informações Salvas" + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+                controller.salvar(pessoa);
             }
         });
 
