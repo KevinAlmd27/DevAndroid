@@ -54,7 +54,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:ems="10"
-        android:hint="@string/txt_hint_edit_nome_do_curso"
+        android:hint="@string/txt_hint_edit_nome_do_curso_Desejado"
         android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
