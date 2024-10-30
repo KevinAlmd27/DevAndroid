@@ -19,7 +19,7 @@ import java.util.List;
 
 import controller.CursoController;
 import controller.PessoaController;
-import devandroid.kevin.applista.R;
+import devandroid.kevin.appgaseta.R;
 import model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
