@@ -87,8 +87,12 @@ public class GasEtaActivity extends AppCompatActivity {
 
                     txtResultado.setText(recomendacao);
 
+                    btnSalvar.setEnabled(true);
+
                 } else {
-                    Toast.makeText(GasEtaActivity.this, "Por Favor Digite os Dados Obrigatorios", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GasEtaActivity.this, "Por Favor Digite os Dados Obrigatorios",
+                            Toast.LENGTH_LONG).show();
+                    btnSalvar.setEnabled(false);
                 }
 
             }
@@ -106,13 +110,14 @@ public class GasEtaActivity extends AppCompatActivity {
                 editEtanol.setText("");
                 editGasolina.setText("");
 
+                btnSalvar.setEnabled(false);
+
             }
         });
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //TODO: Desabilitar o botão salvar.
                 combustivelGasolina = new Combustivel();
                 combustivelEtanol = new Combustivel();
 
