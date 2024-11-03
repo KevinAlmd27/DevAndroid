@@ -10,8 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import DataBase.GasEtaDB;
-import devandroid.kevin.appgaseta.R;
+import devandroid.kevin.applista.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -34,13 +33,10 @@ public class SplashActivity extends AppCompatActivity {
     private void cumutarTelaSplash() {
 
         new Handler().postDelayed(new Runnable() {
-
             @Override
             public void run() {
 
-                GasEtaDB db = new GasEtaDB(SplashActivity.this);
-
-                Intent telaPrincipal = new Intent(SplashActivity.this, GasEtaActivity.class);
+                Intent telaPrincipal = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(telaPrincipal);
                 finish();
 
