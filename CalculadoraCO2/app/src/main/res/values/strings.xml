@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CalculadoraCO2</string>
+
+    <string name="txt_hint_edit_distancia">DISTÂNCIA</string>
+    <string name="txt_hint_edit_litrosAbastecidos">LITROS ABASTECIDOS</string>
+    <string name="txt_titulo">CALCULADORA DE CO2\n</string>
+    <string name="txt_button_calcular">CALCULAR\n</string>
+    <string name="txt_Resultado">RESULTADO</string>
+    <string name="txt_button_Salvar">SALVAR</string>
+    <string name="txt_button_limpar">LIMPAR</string>
+    <string name="txt_button_Finalizar">FINALIZAR</string>
+    <string name="txt_hint_edit_subTitulo">QUAL TIPO DE GASOLINA?</string>
+
+</resources>
