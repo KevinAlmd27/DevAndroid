@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import apoio.UtilGasEta;
 import controller.CombustivelController;
 import devandroid.kevin.appgaseta.R;
@@ -35,25 +37,21 @@ public class GasEtaActivity extends AppCompatActivity {
 
     double precoGasolina;
     double precoEtanol;
+
     String recomendacao;
+
+    List<Combustivel> dados;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        controller = new CombustivelController(GasEtaActivity.this);
-        Combustivel combustivel = new Combustivel();
-
         setContentView(R.layout.activity_gaseta);
 
-        //  utilGasEta.metodoEstatico();
-        //    utilGasEta.metodoNaoEstatico();
+        controller = new CombustivelController(GasEtaActivity.this);
 
-        Toast.makeText(GasEtaActivity.this,
-                UtilGasEta.calcularMelhorOpcao(5.12, 3.39),
-                Toast.LENGTH_LONG).show();
-
+        dados = controller.getListaDados();
 
         txtResultado = findViewById(R.id.txtResultado);
 
@@ -111,8 +109,9 @@ public class GasEtaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                editGasolina.setText("");
+                editEtanol.setText("");
                 controller.limpar();
-
                 btnSalvar.setEnabled(false);
 
             }
@@ -136,6 +135,8 @@ public class GasEtaActivity extends AppCompatActivity {
 
                 controller.salvar(combustivelGasolina);
                 controller.salvar(combustivelEtanol);
+
+
                 int parada = 0;
             }
         });

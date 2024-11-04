@@ -1,4 +1,4 @@
-package devandroid.kevin.calculadoraco2;
+package model;
 
 public class Calculadora {
 

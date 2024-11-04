@@ -1,5 +1,6 @@
 package DataBase;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,11 +8,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Combustivel;
+
 public class GasEtaDB extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "gaseta.db";
+    private static final String DB_NAME = "gaseta.db";
 
-    public static final int  DB_VERSION = 1;
+    private static final int  DB_VERSION = 1;
 
     Cursor cursor;
 
@@ -47,22 +53,24 @@ public class GasEtaDB extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
 
-    //Criar métodos para implemetar um CRUD
-    // C = Creat criar o banco de daodos e as tabelas
-    // Create database nome_do_banco_de_dados.db(SQL)
-    //1 - Nome do Banco de Dados
-    //2- Versão do Banco de Dados
+    public void salvarObjeto(String tabela, ContentValues dados){
 
+        db.insert(tabela,null,dados);
 
-    // Create table
+    }
 
-    // R = Retrieve recuperar os dados salvos as tabelas
-    // select * from table(SQL)
+    public List<Combustivel> listarDados(){
 
-    // U = Update alterar os dados que já existem em um registro na tabela
-    // Update from table(SQL)
+        List<Combustivel> lista = new ArrayList<>();
 
-    //D = Delete deletar os dados/registros de uma tabela
-    // Delete from (SQL)
+        //represents um registro que está salvo na tabela
+        //Combustivel do Banco de Dados da Aplicação
+        Combustivel registro
+
+        String querySQL = "SELECT*FROM Combustivel";
+
+        
+        return lista;
+    }
 
 }
