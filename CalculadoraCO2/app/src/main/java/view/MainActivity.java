@@ -22,7 +22,6 @@ import devandroid.kevin.calculadoraco2.R;
 
 public class MainActivity extends AppCompatActivity {
 
-
     List<String> combustivel;
     Controller controller;
 
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnFinalizar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +50,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         txtResultado = findViewById(R.id.txtResultado);
-
         spinner = findViewById(R.id.spinner);
-
         editDistancia = findViewById(R.id.editDistancia);
         editLitrosAbastecidos = findViewById(R.id.editLitrosAbastecidos);
         editConsumoPorLitro = findViewById(R.id.editConsumoPorLitro);
-
         btnCalcular = findViewById(R.id.btnCalcular);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnLimpar = findViewById(R.id.btnLimpar);
@@ -70,23 +65,29 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
                 controller.dadosParaSpinner());
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-
         spinner.setAdapter(adapter);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean isDadosOk = true;
-                if(TextUtils.isEmpty(editLitrosAbastecidos.getText())){
-                    editLitrosAbastecidos.setError(" Obrigatorio");
+
+                if (TextUtils.isEmpty(editLitrosAbastecidos.getText())) {
+                    editLitrosAbastecidos.setError(" Obrigatório");
                     editLitrosAbastecidos.requestFocus();
                     isDadosOk = false;
                 }
-                if(TextUtils.isEmpty(editDistancia.getText())){
-                    editDistancia.setError(" Obrigatorio");
+                if (TextUtils.isEmpty(editDistancia.getText())) {
+                    editDistancia.setError(" Obrigatório");
                     editDistancia.requestFocus();
                     isDadosOk = false;
                 }
+                if (TextUtils.isEmpty(editConsumoPorLitro.getText())) {
+                    editConsumoPorLitro.setError(" Obrigatório");
+                    editConsumoPorLitro.requestFocus();
+                    isDadosOk = false;
+                }
+
                 if (isDadosOk) {
                     double litrosAbastecidos = Double.parseDouble(editLitrosAbastecidos.getText().toString());
                     double distancia = Double.parseDouble(editDistancia.getText().toString());
@@ -97,30 +98,30 @@ public class MainActivity extends AppCompatActivity {
                     String combustivelSelecionado = spinner.getSelectedItem().toString();
 
                     double fatorEmissao;
-                    if (litrosNecessarios >= litrosAbastecidos) {
-                        txtResultado.setText(String.format("Gasolina Necessaria: %.2f / Gasolina disponivel: %.2f", litrosNecessarios, litrosAbastecidos ));
-                        }else{
-                        if (combustivelSelecionado.equals("Gasolina Comum")) {
+                    switch (combustivelSelecionado) {
+                        case "Gasolina Comum":
+                        case "Gasolina Aditivada":
+                        case "Gasolina Reformulada":
                             fatorEmissao = 1.45;
-                        } else if (combustivelSelecionado.equals("Gasolina Aditivada")) {
-                            fatorEmissao = 1.45;
-                        } else if (combustivelSelecionado.equals("Gasolina Reformulada")) {
-                            fatorEmissao = 1.45;
-                        } else if (combustivelSelecionado.equals("Gasolina Premium/alta Octanagem")) {
+                            break;
+                        case "Gasolina Premium/alta Octanagem":
                             fatorEmissao = 1.55;
-                        } else if (combustivelSelecionado.equals("Diesel")) {
+                            break;
+                        case "Diesel":
+                            fatorEmissao = 2.65;
+                            break;
+                        case "Etanol":
                             fatorEmissao = 1.23;
-                        } else if (combustivelSelecionado.equals("Etanol")) {
-                            fatorEmissao = 1.23;
-                        } else {
+                            break;
+                        default:
                             fatorEmissao = 1.18;
-                        }
-                        double emissaoCO2 = litrosAbastecidos * fatorEmissao;
-                        txtResultado.setText(String.format("Emissão de CO₂: %.2f kg", emissaoCO2));
+                            break;
                     }
-                }
 
+                    double emissaoCO2 = litrosAbastecidos * fatorEmissao;
+                    txtResultado.setText(String.format("Emissão de CO₂: %.2f kg", emissaoCO2));
+                }
             }
-        });
+        }); // <-- Aqui estava o erro: a chave de fechamento da onClickListener estava fora de lugar.
     }
 }
