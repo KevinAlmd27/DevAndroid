@@ -11,14 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-Calculadora
+
 import java.util.List;
 
-import apoio.UtilGasEta;
-
-import controller.apoio.UtilGasEta;
-main
 import controller.CombustivelController;
+import controller.apoio.UtilGasEta;
 import devandroid.kevin.appgaseta.R;
 import model.Combustivel;
 
@@ -53,6 +50,8 @@ public class GasEtaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gaseta);
 
         controller = new CombustivelController(GasEtaActivity.this);
+
+        dados = controller.getListaDados();
 
         dados = controller.getListaDados();
 
@@ -143,6 +142,7 @@ public class GasEtaActivity extends AppCompatActivity {
                 int parada = 0;
             }
         });
+
 
     }
 }

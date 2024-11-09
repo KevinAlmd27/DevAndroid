@@ -41,11 +41,11 @@ public class CombustivelController extends GasEtaDB {
         
         salvarObjeto("Combustivel",dados);
     }
-
     public List<Combustivel> getListaDados(){
         return listarDados();
     }
     public void limpar(){
+
         dadosPreferences.clear();
         dadosPreferences.apply();
     }
