@@ -57,7 +57,6 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
         db.insert(tabela,null,dados);
     }
-
     public List<Combustivel> listarDados(){
 
         List<Combustivel> lista = new ArrayList<>();
@@ -92,6 +91,19 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
 
         return lista;
+    }
+
+
+    public void alterarObjeto(String tabela, ContentValues dados){
+
+        //ID do registro  a ser alterado(PK)
+        //update TABLE set campo=novoDado WHERE id=?
+
+        int id  = dados.getAsInteger("id");
+
+        db.update(tabela,dados,"id=?",
+                new String[]{Integer.toString(id)});
+
     }
 
 }
