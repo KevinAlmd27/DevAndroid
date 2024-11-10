@@ -45,8 +45,8 @@ public class GasEtaDB extends SQLiteOpenHelper {
                 "recomendacao TEXT)";
 
 
-            db.execSQL(sqlTabelaCombustivel);
-            db.execSQL(sqlTabelaCarro);
+        db.execSQL(sqlTabelaCombustivel);
+        db.execSQL(sqlTabelaCarro);
 
     }
 
@@ -57,7 +57,7 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
         db.insert(tabela,null,dados);
     }
-
+GasEtaBD
     public List<Combustivel> listarDados(){
 
         List<Combustivel> lista = new ArrayList<>();
@@ -92,6 +92,55 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
         
         return lista;
+
+        Combustivel registro;
+
+        String querySQL = "SELECT*FROM Combustivel";
+
+        cursor = db.rawQuery(querySQL, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+
+                registro = new Combustivel();
+
+                registro.setId(cursor.getInt(0));
+                registro.setNomeDoCombustivel(cursor.getString(1));
+                registro.setPrecoDoCombustivel(cursor.getDouble(2));
+                registro.setRecomendacao(cursor.getString(3));
+
+                lista.add(registro);
+
+            }while(cursor.moveToNext());
+
+        }else{
+            //False
+        }
+
+
+        return lista;
+    }
+
+
+    public void alterarObjeto(String tabela, ContentValues dados){
+
+        //ID do registro  a ser alterado(PK)
+        //update TABLE set campo=novoDado WHERE id=?
+
+        int id  = dados.getAsInteger("id");
+
+        db.update(tabela,dados,"id=?",
+                new String[]{Integer.toString(id)});
+
+    }
+    public void deletarObjeto(String tabela, int id){
+
+        //ID do registro  a ser alterado(PK)
+        //update from TABLE WHERE id=?
+
+        db.delete(tabela,"id=?",
+                new String[]{Integer.toString(id)});
     }
 
 }
