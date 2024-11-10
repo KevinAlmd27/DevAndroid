@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import apoio.UtilGasEta;
+
 import controller.CombustivelController;
+import controller.apoio.UtilGasEta;
 import devandroid.kevin.appgaseta.R;
 import model.Combustivel;
 
@@ -53,7 +55,11 @@ public class GasEtaActivity extends AppCompatActivity {
 
         dados = controller.getListaDados();
 
+
+        dados = controller.getListaDados();
+
         Combustivel objAlteracao = dados.get(1);
+
 
         objAlteracao.setNomeDoCombustivel("**Gasolina**");
         objAlteracao.setPrecoDoCombustivel(5.97);
@@ -149,6 +155,7 @@ public class GasEtaActivity extends AppCompatActivity {
                 int parada = 0;
             }
         });
+
 
 
     }
