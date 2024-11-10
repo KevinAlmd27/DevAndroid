@@ -34,11 +34,10 @@
                 />
 
             <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="123dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:src="@mipmap/img_2"></ImageView>
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
                 android:layout_width="match_parent"
