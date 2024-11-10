@@ -2,6 +2,7 @@ package model;
 
 public class Pessoa {
 
+    private int id;
     private String primeiroNome;
 
     private String sobrenome;
@@ -12,7 +13,17 @@ public class Pessoa {
 
     public Pessoa(){}
 
-    public String getPrimeiroNome() {return primeiroNome;}
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPrimeiroNome() {
+        return primeiroNome;
+    }
 
     public void setPrimeiroNome(String primeiroNome) {
         this.primeiroNome = primeiroNome;
