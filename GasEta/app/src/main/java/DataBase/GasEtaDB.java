@@ -57,12 +57,41 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
         db.insert(tabela,null,dados);
     }
+GasEtaBD
     public List<Combustivel> listarDados(){
 
         List<Combustivel> lista = new ArrayList<>();
 
         //represents um registro que está salvo na tabela
         //Combustivel do Banco de Dados da Aplicação
+
+        Combustivel registro;
+
+        String querySQL = "SELECT*FROM Combustivel";
+
+        cursor = db.rawQuery(querySQL, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+
+                registro = new Combustivel();
+
+                registro.setId(cursor.getInt(0));
+                registro.setNomeDoCombustivel(cursor.getString(1));
+                registro.setPrecoDoCombustivel(cursor.getDouble(2));
+                registro.setRecomendacao(cursor.getString(3));
+
+                lista.add(registro);
+
+            }while(cursor.moveToNext());
+
+        }else{
+            //False
+        }
+
+        
+        return lista;
 
         Combustivel registro;
 
@@ -112,7 +141,6 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
         db.delete(tabela,"id=?",
                 new String[]{Integer.toString(id)});
-
     }
 
 }

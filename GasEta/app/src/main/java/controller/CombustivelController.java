@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import DataBase.GasEtaDB;
 import model.Combustivel;
 import view.GasEtaActivity;
@@ -19,7 +22,10 @@ public class CombustivelController extends GasEtaDB {
 
     public static final String NOME_PREFERENCES = "pref_gaseta";
 
+    public CombustivelController(GasEtaActivity activity){
+
     public CombustivelController(GasEtaActivity activity) {
+
         super(activity);
         preferences = activity.getSharedPreferences(NOME_PREFERENCES, 0);
         dadosPreferences = preferences.edit();
@@ -29,10 +35,21 @@ public class CombustivelController extends GasEtaDB {
 
         ContentValues dados = new ContentValues();
 
+        ContentValues dados = new ContentValues();
+
         dadosPreferences.putString("combustivel", combustivel.getNomeDoCombustivel());
         dadosPreferences.putFloat("precoDoCombustivel", (float) combustivel.getPrecoDoCombustivel());
         dadosPreferences.putString("recomendacao", combustivel.getRecomendacao());
         dadosPreferences.apply();
+
+        dados.put("nomeDoCombustivel",combustivel.getNomeDoCombustivel());
+        dados.put("precoDoCombustivel",combustivel.getPrecoDoCombustivel());
+        dados.put("recomendacao",combustivel.getRecomendacao());
+        
+        salvarObjeto("Combustivel",dados);
+    }
+    public List<Combustivel> getListaDados(){
+        return listarDados();
 
         dados.put("nomeDoCombustivel", combustivel.getNomeDoCombustivel());
         dados.put("precoDoCombustivel", combustivel.getPrecoDoCombustivel());
@@ -58,6 +75,7 @@ public class CombustivelController extends GasEtaDB {
     }
     public void deletar(int id) {
         deletarObjeto("Combustivel",id);
+
     }
     public void limpar () {
 
